@@ -1,5 +1,3 @@
-import React from "react";
-
-export default function Home() {
-  return <div className="text-4xl font-">GitHub</div>;
+export default function Page() {
+  return <main className="h-full bg-gray-medium">/</main>;
 }

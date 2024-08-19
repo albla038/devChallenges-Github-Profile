@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
+import clsx from "clsx";
+import Header from "./components/header";
 
 const beVietnamPro = Be_Vietnam_Pro({
   subsets: ["latin"],
@@ -19,7 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={beVietnamPro.className}>{children}</body>
+      <body
+        className={clsx([
+          beVietnamPro.className,
+          "text-gray-light flex h-screen flex-col",
+        ])}
+      >
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
