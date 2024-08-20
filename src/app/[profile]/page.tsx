@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { profileT } from "../lib/types";
-import { debug, log } from "console";
+import RepoList from "../components/repo-list";
+import Link from "next/link";
+import ProfileDetails from "../components/profile-details";
 
 type PageProps = {
   params: {
@@ -14,16 +16,43 @@ export default async function Page({ params }: PageProps) {
   );
   const profile: profileT = await profile_req.json();
 
-  const repos_req = await fetch(profile.repos_url);
-  const data = await repos_req.json();
-  // Get the first 4 repos
-  const repos = data.slice(0, 4);
+  // Profile detail data for cards
+  const profileDetailData = [
+    {
+      term: "Followers",
+      description: profile.followers.toString(),
+    },
+    {
+      term: "Following",
+      description: profile.following.toString(),
+    },
+    {
+      term: "Location",
+      description: profile.location,
+    },
+  ];
 
   return (
-    <main className="h-full bg-gray-medium">
-      <Image src={profile.avatar_url} alt="Avatar" width={192} height={192} />
-      <h1>{profile.name}</h1>
-      <p>{profile.bio}</p>
+    <main className="flex h-full flex-col justify-between gap-8 px-12 pb-12 xl:px-32">
+      <ProfileDetails
+        avatar_url={profile.avatar_url}
+        profileData={profileDetailData}
+      />
+
+      <section>
+        <h1 className="text-[32px] font-medium text-white">{profile.name}</h1>
+        <p className="text-gray-light">{profile.bio}</p>
+      </section>
+
+      <RepoList repos_url={profile.repos_url} />
+
+      <Link
+        href={profile.html_url}
+        target="_blank"
+        className="mx-auto bg-gradient-to-r text-center font-medium text-gray-light"
+      >
+        View all repositories
+      </Link>
     </main>
   );
 }
