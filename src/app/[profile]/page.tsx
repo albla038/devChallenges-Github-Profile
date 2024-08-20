@@ -49,7 +49,7 @@ export default async function Page({ params }: PageProps) {
       <Link
         href={profile.html_url}
         target="_blank"
-        className="mx-auto bg-gradient-to-r text-center font-medium text-gray-light"
+        className="mx-auto bg-gradient-to-r text-center font-medium text-gray-light outline-none transition hover:scale-105 focus:scale-105"
       >
         View all repositories
       </Link>

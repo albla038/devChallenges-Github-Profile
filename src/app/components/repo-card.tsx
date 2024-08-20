@@ -3,6 +3,7 @@ import Link from "next/link";
 import shieldIcon from "../../../public/Chield_alt.svg";
 import nestingIcon from "../../../public/Nesting.svg";
 import starIcon from "../../../public/Star.svg";
+import clsx from "clsx";
 
 type RepoCardProps = {
   name: string;
@@ -39,7 +40,11 @@ export default function RepoCard({
     <Link
       href={url}
       target="_blank"
-      className="flex h-fit w-full flex-col gap-4 rounded-xl bg-gradient-to-r from-black to-purple p-6"
+      className={clsx([
+        "flex h-fit w-full flex-col gap-4 rounded-xl bg-gradient-to-r from-black to-purple p-6",
+        // hover states
+        "outline-none transition hover:scale-[1.025] focus:scale-[1.025]",
+      ])}
     >
       <h2 className="text-xl text-white">{name}</h2>
 
