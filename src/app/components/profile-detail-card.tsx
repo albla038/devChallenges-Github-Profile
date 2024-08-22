@@ -3,7 +3,7 @@ type ProfileDetailProps = {
   description: string;
 };
 
-export default function ProfileDetail({
+export default function ProfileDetailCard({
   term,
   description,
 }: ProfileDetailProps) {

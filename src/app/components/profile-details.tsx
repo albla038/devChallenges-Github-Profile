@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ProfileDetail from "../components/profile-detail";
+import ProfileDetailCard from "./profile-detail-card";
 
 type ProfileDetailsProps = {
   avatar_url: string;
@@ -14,7 +14,7 @@ export default function ProfileDetails({
   profileData,
 }: ProfileDetailsProps) {
   return (
-    <section className="flex gap-8 pt-2">
+    <section className="flex flex-col gap-8 pt-2 sm:flex-row">
       <Image
         src={avatar_url}
         alt="Avatar"
@@ -24,7 +24,7 @@ export default function ProfileDetails({
       />
       <dl className="flex flex-col items-start gap-4 lg:flex-row">
         {profileData.map((detail) => (
-          <ProfileDetail
+          <ProfileDetailCard
             key={detail.term}
             term={detail.term}
             description={detail.description}
