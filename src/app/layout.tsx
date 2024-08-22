@@ -24,7 +24,7 @@ export default function RootLayout({
       <body
         className={clsx([
           beVietnamPro.className,
-          "bg-gray-dark text-gray-light",
+          "min-h-screen bg-gray-dark text-gray-light",
         ])}
       >
         <Header />
