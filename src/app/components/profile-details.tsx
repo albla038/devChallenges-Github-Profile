@@ -20,7 +20,7 @@ export default function ProfileDetails({
         alt="Avatar"
         width={128}
         height={128}
-        className="relative -top-14 size-[128px] rounded-3xl border-8 border-gray-dark object-none"
+        className="relative -top-14 size-[128px] rounded-3xl border-8 border-gray-extradark object-none"
       />
       <dl className="flex flex-col items-start gap-4 lg:flex-row">
         {profileData.map((detail) => (

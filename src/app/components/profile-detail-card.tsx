@@ -8,7 +8,7 @@ export default function ProfileDetailCard({
   description,
 }: ProfileDetailProps) {
   return (
-    <div className="flex w-fit items-center justify-center divide-x divide-gray-medium rounded-xl bg-gray-extradark p-2">
+    <div className="flex w-fit items-center justify-center divide-x divide-gray-medium rounded-xl bg-black p-2">
       <dt className="p-2 px-4 text-gray-medium">{term}</dt>
       <dd className="p-2 px-4 text-white">{description}</dd>
     </div>
