@@ -10,19 +10,19 @@ import { searchResultDataT } from "./search";
 type SearchResultProps = {
   href: string;
   profile: searchResultDataT;
-  setDisplayResult: Dispatch<SetStateAction<boolean>>;
+  setProfile: Dispatch<SetStateAction<searchResultDataT | null>>;
 };
 
 export default function SearchResult({
   href,
   profile,
-  setDisplayResult,
+  setProfile,
 }: SearchResultProps) {
   return (
-    <OutsideClick onOutsideClick={() => setDisplayResult(false)}>
+    <OutsideClick onOutsideClick={() => setProfile(null)}>
       <Link
         href={href}
-        onClick={() => setDisplayResult(false)}
+        onClick={() => setProfile(null)}
         className={clsx([
           "absolute left-1/2 top-[102px] z-10 flex w-2/3 -translate-x-1/2 items-center gap-3 rounded-xl bg-black p-2 outline-none",
           // Small screen

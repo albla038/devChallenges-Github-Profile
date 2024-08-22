@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import SearchResult from "./search-result";
 import SearchBar from "./search-bar";
@@ -20,7 +20,6 @@ export default function Search() {
   const pathname = usePathname();
   const { replace } = useRouter();
   const [profile, setProfile] = useState<searchResultDataT | null>(null);
-  const [displayResult, setDisplayResult] = useState(false);
 
   const params = new URLSearchParams(searchParams);
 
@@ -31,7 +30,7 @@ export default function Search() {
         params.set(key, value);
       } else {
         params.delete(key);
-        setDisplayResult(false);
+        setProfile(null);
       }
 
       replace(`${pathname}?${params.toString()}`);
@@ -55,21 +54,15 @@ export default function Search() {
     300,
   );
 
-  useEffect(() => {
-    if (params.get("search")?.toString() === profile?.login) {
-      setDisplayResult(true);
-    }
-  }, [profile]);
-
   return (
     <>
       <SearchBar onChange={handleChange} />
 
-      {displayResult && profile && (
+      {profile && (
         <SearchResult
           href={`/${searchParams.get("search")?.toString()}`}
           profile={profile}
-          setDisplayResult={setDisplayResult}
+          setProfile={setProfile}
         />
       )}
     </>
